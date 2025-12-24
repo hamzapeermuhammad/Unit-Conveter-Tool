@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { SwitchHorizontal } from 'lucide-react';
+import { ArrowRightLeft } from 'lucide-react';
 import type { Unit } from '@/lib/conversions';
 
 interface ConverterPanelProps {
@@ -103,7 +103,7 @@ export default function ConverterPanel({ units, defaultFrom, defaultTo, conversi
           {/* Swap Button */}
           <div className="mt-7">
             <Button variant="ghost" size="icon" onClick={swapUnits} aria-label="Swap units">
-              <SwitchHorizontal className="h-5 w-5 text-muted-foreground" />
+              <ArrowRightLeft className="h-5 w-5 text-muted-foreground" />
             </Button>
           </div>
 
