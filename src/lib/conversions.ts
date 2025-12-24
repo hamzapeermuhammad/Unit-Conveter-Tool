@@ -85,34 +85,67 @@ export const convertTime = (value: number, from: string, to: string): number => 
 
 // Currency
 export const currencyUnits: Unit[] = [
-  { id: 'USD', name: 'US Dollar', symbol: '$' },
-  { id: 'EUR', name: 'Euro', symbol: '€' },
-  { id: 'JPY', name: 'Japanese Yen', symbol: '¥' },
-  { id: 'GBP', name: 'British Pound', symbol: '£' },
-  { id: 'CAD', name: 'Canadian Dollar', symbol: 'CA$' },
-  { id: 'PKR', name: 'Pakistani Rupee', symbol: '₨' },
-  { id: 'INR', name: 'Indian Rupee', symbol: '₹' },
-  { id: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
-  { id: 'CHF', name: 'Swiss Franc', symbol: 'CHF' },
-  { id: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
+    { id: 'USD', name: 'US Dollar', symbol: '$' },
+    { id: 'EUR', name: 'Euro', symbol: '€' },
+    { id: 'JPY', name: 'Japanese Yen', symbol: '¥' },
+    { id: 'GBP', name: 'British Pound', symbol: '£' },
+    { id: 'CAD', name: 'Canadian Dollar', symbol: 'CA$' },
+    { id: 'PKR', name: 'Pakistani Rupee', symbol: '₨' },
+    { id: 'INR', name: 'Indian Rupee', symbol: '₹' },
+    { id: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
+    { id: 'CHF', name: 'Swiss Franc', symbol: 'CHF' },
+    { id: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
+    { id: 'AED', name: 'UAE Dirham', symbol: 'AED' },
+    { id: 'BRL', name: 'Brazilian Real', symbol: 'R$' },
+    { id: 'RUB', name: 'Russian Ruble', symbol: '₽' },
+    { id: 'ZAR', name: 'South African Rand', symbol: 'R' },
 ];
-
+  
 // NOTE: These are mock conversion rates for demonstration purposes and do not reflect real-time data.
 export const currencyRates: { [key: string]: { rate: number; previousRate: number } } = {
-  USD: { rate: 1, previousRate: 1 },
-  EUR: { rate: 0.93, previousRate: 0.92 }, // 1 USD = 0.93 EUR
-  JPY: { rate: 157.25, previousRate: 157.18 }, // 1 USD = 157.25 JPY
-  GBP: { rate: 0.79, previousRate: 0.79 }, // 1 USD = 0.79 GBP
-  CAD: { rate: 1.37, previousRate: 1.45 }, // 1 USD = 1.37 CAD (previously 1.45, an anomaly)
-  PKR: { rate: 278.4, previousRate: 278.5 }, // 1 USD = 278.4 PKR
-  INR: { rate: 83.5, previousRate: 83.4 },   // 1 USD = 83.5 INR
-  AUD: { rate: 1.5, previousRate: 1.51 },    // 1 USD = 1.5 AUD
-  CHF: { rate: 0.9, previousRate: 0.91 },    // 1 USD = 0.9 CHF
-  CNY: { rate: 7.25, previousRate: 7.24 },   // 1 USD = 7.25 CNY
+    USD: { rate: 1, previousRate: 1 },
+    EUR: { rate: 0.93, previousRate: 0.92 },
+    JPY: { rate: 157.25, previousRate: 157.18 },
+    GBP: { rate: 0.79, previousRate: 0.79 },
+    CAD: { rate: 1.37, previousRate: 1.37 }, 
+    PKR: { rate: 278.4, previousRate: 278.5 },
+    INR: { rate: 83.5, previousRate: 83.4 },
+    AUD: { rate: 1.5, previousRate: 1.51 },
+    CHF: { rate: 0.9, previousRate: 0.91 },
+    CNY: { rate: 7.25, previousRate: 7.24 },
+    AED: { rate: 3.67, previousRate: 3.67 },
+    BRL: { rate: 5.35, previousRate: 5.30 },
+    RUB: { rate: 89.10, previousRate: 88.95 },
+    ZAR: { rate: 18.88, previousRate: 18.95 },
 };
 
 export const convertCurrency = (value: number, from: string, to: string): number => {
   if (from === to) return value;
   const valueInUSD = value / currencyRates[from].rate;
   return valueInUSD * currencyRates[to].rate;
+};
+
+// Volume
+export const volumeUnits: Unit[] = [
+  { id: 'l', name: 'Liters', symbol: 'L' },
+  { id: 'ml', name: 'Milliliters', symbol: 'mL' },
+  { id: 'gal', name: 'Gallons (US)', symbol: 'gal' },
+  { id: 'pt', name: 'Pints (US)', symbol: 'pt' },
+  { id: 'qt', name: 'Quarts (US)', symbol: 'qt' },
+  { id: 'fl-oz', name: 'Fluid Ounces (US)', symbol: 'fl oz' },
+];
+
+const volumeFactors: { [key: string]: number } = { // to Liters
+  'l': 1,
+  'ml': 0.001,
+  'gal': 3.78541,
+  'pt': 0.473176,
+  'qt': 0.946353,
+  'fl-oz': 0.0295735,
+};
+
+export const convertVolume = (value: number, from: string, to: string): number => {
+  if (from === to) return value;
+  const valueInLiters = value * volumeFactors[from];
+  return valueInLiters / volumeFactors[to];
 };

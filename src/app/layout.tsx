@@ -4,7 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
   title: 'Unit Converter',
-  description: 'A modern, intuitive unit converter for length, weight, currency, and time.',
+  description: 'A modern, intuitive unit converter for length, weight, volume, currency, and time.',
 };
 
 export default function RootLayout({
