@@ -90,6 +90,11 @@ export const currencyUnits: Unit[] = [
   { id: 'JPY', name: 'Japanese Yen', symbol: '¥' },
   { id: 'GBP', name: 'British Pound', symbol: '£' },
   { id: 'CAD', name: 'Canadian Dollar', symbol: 'CA$' },
+  { id: 'PKR', name: 'Pakistani Rupee', symbol: '₨' },
+  { id: 'INR', name: 'Indian Rupee', symbol: '₹' },
+  { id: 'AUD', name: 'Australian Dollar', symbol: 'A$' },
+  { id: 'CHF', name: 'Swiss Franc', symbol: 'CHF' },
+  { id: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
 ];
 
 // Mock conversion rates relative to USD (1 USD = X units of currency)
@@ -99,6 +104,11 @@ export const currencyRates: { [key: string]: { rate: number; previousRate: numbe
   JPY: { rate: 157.25, previousRate: 157.18 }, // 1 USD = 157.25 JPY
   GBP: { rate: 0.79, previousRate: 0.79 }, // 1 USD = 0.79 GBP
   CAD: { rate: 1.37, previousRate: 1.45 }, // 1 USD = 1.37 CAD (previously 1.45, an anomaly)
+  PKR: { rate: 278.4, previousRate: 278.5 }, // 1 USD = 278.4 PKR
+  INR: { rate: 83.5, previousRate: 83.4 },   // 1 USD = 83.5 INR
+  AUD: { rate: 1.5, previousRate: 1.51 },    // 1 USD = 1.5 AUD
+  CHF: { rate: 0.9, previousRate: 0.91 },    // 1 USD = 0.9 CHF
+  CNY: { rate: 7.25, previousRate: 7.24 },   // 1 USD = 7.25 CNY
 };
 
 export const convertCurrency = (value: number, from: string, to: string): number => {
