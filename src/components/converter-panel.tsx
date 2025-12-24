@@ -81,7 +81,7 @@ export default function ConverterPanel({ units, defaultFrom, defaultTo, conversi
                 id="from-value"
                 value={inputValue}
                 onChange={handleInputChange}
-                className="pl-8 text-lg font-semibold"
+                className="pl-8 text-lg font-semibold text-right pr-3"
                 type="text"
                 inputMode="decimal"
               />
@@ -112,7 +112,7 @@ export default function ConverterPanel({ units, defaultFrom, defaultTo, conversi
             <label htmlFor="to-value" className="text-sm font-medium text-muted-foreground">To</label>
             <div className="relative flex h-10 w-full items-center rounded-md border border-input bg-secondary/50 px-3 py-2 text-lg font-semibold">
               <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">{toUnitDetails?.symbol}</span>
-              <span className={`pl-8 transition-colors ${pop ? 'value-pop' : ''}`}>{outputValue}</span>
+              <span className={`w-full text-right transition-colors ${pop ? 'value-pop' : ''}`}>{outputValue}</span>
             </div>
             <Select value={toUnit} onValueChange={setToUnit}>
               <SelectTrigger>

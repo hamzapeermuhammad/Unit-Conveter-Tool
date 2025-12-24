@@ -97,7 +97,7 @@ export const currencyUnits: Unit[] = [
   { id: 'CNY', name: 'Chinese Yuan', symbol: '¥' },
 ];
 
-// Mock conversion rates relative to USD (1 USD = X units of currency)
+// NOTE: These are mock conversion rates for demonstration purposes and do not reflect real-time data.
 export const currencyRates: { [key: string]: { rate: number; previousRate: number } } = {
   USD: { rate: 1, previousRate: 1 },
   EUR: { rate: 0.93, previousRate: 0.92 }, // 1 USD = 0.93 EUR
